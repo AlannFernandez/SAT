@@ -1,36 +1,32 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 import { PWAProvider } from "@/components/providers/pwa-provider"
 import { Toaster } from "@/components/ui/toaster"
 
-const inter = Inter({ subsets: ["latin"] })
-
 export const metadata: Metadata = {
-  title: "SAT - Sistema de alerta tempranas",
-  description: "Aplicación moderna para seguridad e higiene con soporte offline",
+  title: "Zimbo Modern - Gestión de Productos",
+  description: "Aplicación moderna para gestión de productos con soporte offline",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "SAT - Sistema de alerta tempranas",
+    title: "Zimbo Modern",
   },
   formatDetection: {
     telephone: false,
   },
   openGraph: {
     type: "website",
-    siteName: "SAT - Sistema de alerta tempranas",
-    title: "SAT - Sistema de alerta tempranas",
-    description: "Aplicación moderna para seguridad e higiene con soporte offline",
+    siteName: "Zimbo Modern",
+    title: "Zimbo Modern - Gestión de Productos",
+    description: "Aplicación moderna para gestión de productos con soporte offline",
   },
   twitter: {
     card: "summary",
-    title: "SAT - Sistema de alerta tempranas",
-    description: "Aplicación moderna para seguridad e higiene con soporte offline",
+    title: "Zimbo Modern - Gestión de Productos",
+    description: "Aplicación moderna para gestión de productos con soporte offline",
   },
-    generator: 'v0.dev'
 }
 
 export const viewport: Viewport = {
@@ -51,8 +47,14 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/icon-192x192.png" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans antialiased">
         <PWAProvider>
           {children}
           <Toaster />
