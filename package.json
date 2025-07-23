@@ -1,10 +1,10 @@
 {
-  "name": "zimbo-pwa-clone",
+  "name": "sat",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=\"--loader ./loader.mjs\" next dev",
-    "build": "cross-env NODE_OPTIONS=\"--loader ./loader.mjs\" next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -49,11 +49,6 @@
     "rimraf": "^6.0.0"
   },
   "engines": {
-    "node": ">=18.18.0",
-    "npm": ">=9.0.0"
-  },
-  "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "node": ">=18.18.0"
   }
 }

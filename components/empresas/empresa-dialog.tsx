@@ -85,7 +85,7 @@ export function EmpresaDialog({ open, onOpenChange, empresa, onSave }: EmpresaDi
     }
   }
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: string | number) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,

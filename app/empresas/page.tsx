@@ -10,13 +10,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { MainLayout } from "@/components/layout/main-layout"
 import { EmpresaDialog } from "@/components/empresas/empresa-dialog"
-import { useEmpresas } from "@/hooks/use-empresas"
+import { useEmpresas, type Empresa } from "@/hooks/use-empresas"
 
 export default function EmpresasPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [filterStatus, setFilterStatus] = useState("all")
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [editingEmpresa, setEditingEmpresa] = useState(null)
+  const [editingEmpresa, setEditingEmpresa] = useState<Empresa | null>(null)
 
   const { empresas, loading, createEmpresa, updateEmpresa, deleteEmpresa } = useEmpresas()
 
@@ -28,17 +28,17 @@ export default function EmpresasPage() {
     return matchesSearch && matchesStatus
   })
 
-  const handleCreateEmpresa = async (empresaData: any) => {
+  const handleCreateEmpresa = async (empresaData: Omit<Empresa, "id" | "createdAt">) => {
     await createEmpresa(empresaData)
     setIsDialogOpen(false)
   }
 
-  const handleEditEmpresa = (empresa: any) => {
+  const handleEditEmpresa = (empresa: Empresa) => {
     setEditingEmpresa(empresa)
     setIsDialogOpen(true)
   }
 
-  const handleUpdateEmpresa = async (empresaData: any) => {
+  const handleUpdateEmpresa = async (empresaData: Omit<Empresa, "id" | "createdAt">) => {
     if (editingEmpresa) {
       await updateEmpresa(editingEmpresa.id, empresaData)
       setEditingEmpresa(null)

@@ -103,7 +103,7 @@ export function ProductCard({ product, onEdit, onDelete }: ProductCardProps) {
           <AlertDialogHeader>
             <AlertDialogTitle>¿Eliminar producto?</AlertDialogTitle>
             <AlertDialogDescription>
-              Esta acción no se puede deshacer. El producto "{product.title}" será eliminado permanentemente.
+              Esta acción no se puede deshacer. El producto &quot;{product.title}&quot; será eliminado permanentemente.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

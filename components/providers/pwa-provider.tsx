@@ -3,6 +3,11 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 import { useToast } from "@/hooks/use-toast"
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>
+}
+
 interface PWAContextType {
   isOnline: boolean
   isInstallable: boolean
@@ -17,7 +22,7 @@ export function PWAProvider({ children }: { children: ReactNode }) {
   const [isOnline, setIsOnline] = useState(true)
   const [isInstallable, setIsInstallable] = useState(false)
   const [isSyncing, setIsSyncing] = useState(false)
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null)
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const { toast } = useToast()
 
   useEffect(() => {
@@ -90,7 +95,7 @@ export function PWAProvider({ children }: { children: ReactNode }) {
     // Detectar si la app es instalable
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault()
-      setDeferredPrompt(e)
+      setDeferredPrompt(e as BeforeInstallPromptEvent)
       setIsInstallable(true)
     }
 
@@ -112,7 +117,7 @@ export function PWAProvider({ children }: { children: ReactNode }) {
     if (outcome === "accepted") {
       toast({
         title: "App instalada",
-        description: "SAT se ha instalado correctamente",
+        description: "Zimbo se ha instalado correctamente",
       })
     }
 
@@ -152,7 +157,7 @@ function ConnectionIndicator() {
   const { isOnline, isSyncing } = usePWA()
 
   let status = "online"
-  let text = "En líneaa"
+  let text = "En línea"
 
   if (isSyncing) {
     status = "syncing"
