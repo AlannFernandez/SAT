@@ -5,27 +5,27 @@ import { PWAProvider } from "@/components/providers/pwa-provider"
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: "Zimbo Modern - Gestión de Productos",
-  description: "Aplicación moderna para gestión de productos con soporte offline",
+  title: "SAT - Sistema de Alerta Temprana",
+  description: "App profesional para técnicos en Seguridad e Higiene. Relevamientos, informes y controles, incluso sin conexión.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Zimbo Modern",
+    title: "SAT - Sistema de Alerta Temprana",
   },
   formatDetection: {
     telephone: false,
   },
   openGraph: {
     type: "website",
-    siteName: "Zimbo Modern",
-    title: "Zimbo Modern - Gestión de Productos",
-    description: "Aplicación moderna para gestión de productos con soporte offline",
+    siteName: "SAT",
+    title: "SAT - Sistema de Alerta Temprana",
+    description: "App profesional para técnicos en Seguridad e Higiene. Relevamientos, informes y controles, incluso sin conexión.",
   },
   twitter: {
     card: "summary",
-    title: "Zimbo Modern - Gestión de Productos",
-    description: "Aplicación moderna para gestión de productos con soporte offline",
+    title: "SAT - Sistema de Alerta Temprana",
+    description: "App profesional para técnicos en Seguridad e Higiene. Relevamientos, informes y controles, incluso sin conexión.",
   },
 }
 
