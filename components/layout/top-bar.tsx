@@ -11,6 +11,11 @@ export function TopBar() {
   const { isOnline, isInstallable, installApp, isSyncing } = usePWA()
   const { toggleSidebar } = useMobileSidebar()
 
+  const handleLogout = () => {
+    document.cookie = "sat_session=; path=/; max-age=0";
+    window.location.href = "/login";
+  };
+
   return (
     <header className="bg-white border-b border-slate-200 px-4 py-3">
       <div className="flex items-center justify-between">
@@ -29,13 +34,11 @@ export function TopBar() {
           >
             <Menu className="w-5 h-5" />
           </Button>
-
           {/* Logo/Title for mobile */}
           <div className="lg:hidden">
             <h1 className="text-lg font-bold text-slate-900">SAT</h1>
           </div>
         </div>
-
         {/* Right side - Actions */}
         <div className="flex items-center space-x-2">
           {/* Connection Status */}
@@ -58,7 +61,6 @@ export function TopBar() {
               </Badge>
             )}
           </div>
-
           {/* Install App */}
           {isInstallable && (
             <Button variant="outline" size="sm" onClick={installApp}>
@@ -66,13 +68,11 @@ export function TopBar() {
               <span className="hidden sm:inline">Instalar</span>
             </Button>
           )}
-
           {/* Notifications */}
           <Button variant="ghost" size="sm" className="relative">
             <Bell className="w-4 h-4" />
             <Badge className="absolute -top-1 -right-1 w-5 h-5 text-xs p-0 flex items-center justify-center">3</Badge>
           </Button>
-
           {/* User Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -96,7 +96,7 @@ export function TopBar() {
                 <Wifi className="w-4 h-4 mr-2" />
                 Configuración
               </DropdownMenuItem>
-              <DropdownMenuItem className="text-red-600 focus:text-red-600">Cerrar sesión</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-600 focus:text-red-600" onClick={handleLogout}>Cerrar sesión</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import "./globals.css"
+import "@/styles/globals.css";
 import { PWAProvider } from "@/components/providers/pwa-provider"
 import { Toaster } from "@/components/ui/toaster"
 
