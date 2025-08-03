@@ -1,9 +1,12 @@
 "use client";
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { registerUser } from "@/lib/services/auth-service";
 
 export default function RegisterPage() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -69,11 +72,47 @@ export default function RegisterPage() {
             </div>
             <div>
               <label className="block text-sm font-medium text-black mb-1">Contraseña</label>
-              <input type="password" autoComplete="new-password" required className="w-full border border-black/20 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#883feb] bg-slate-50" value={password} onChange={e => setPassword(e.target.value)} />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  required
+                  className="w-full border border-black/20 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#883feb] bg-slate-50 pr-10"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-[#883feb] p-1 rounded hover:bg-[#883feb]/10"
+                  onClick={() => setShowPassword((v) => !v)}
+                  tabIndex={-1}
+                  aria-label={showPassword ? "Ocultar contraseña" : "Ver contraseña"}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-black mb-1">Repetir contraseña</label>
-              <input type="password" autoComplete="new-password" required className="w-full border border-black/20 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#883feb] bg-slate-50" value={repeatPassword} onChange={e => setRepeatPassword(e.target.value)} />
+              <div className="relative">
+                <input
+                  type={showRepeatPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  required
+                  className="w-full border border-black/20 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#883feb] bg-slate-50 pr-10"
+                  value={repeatPassword}
+                  onChange={e => setRepeatPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-[#883feb] p-1 rounded hover:bg-[#883feb]/10"
+                  onClick={() => setShowRepeatPassword((v) => !v)}
+                  tabIndex={-1}
+                  aria-label={showRepeatPassword ? "Ocultar contraseña" : "Ver contraseña"}
+                >
+                  {showRepeatPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
             </div>
             {error && <div className="text-red-600 text-sm text-center">{error}</div>}
             <button type="submit" disabled={loading} className="w-full bg-gradient-to-r from-[#883feb] to-[#733feb] text-white font-semibold py-2 rounded-lg transition disabled:opacity-60 shadow-lg border border-black/20">
