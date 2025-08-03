@@ -7,7 +7,7 @@ export default function LandingPage() {
       {/* Header */}
       <header className="w-full flex items-center justify-between px-6 py-4 bg-white/80 shadow-sm sticky top-0 z-10">
         <div className="flex items-center gap-2">
-          <Image src="/icon.png" alt="Logo SAT" width={48} height={48} className="rounded-full" unoptimized />
+          <Image src="/icon.png" alt="Logo SAT" width={48} height={48} unoptimized />
           <span className="font-bold text-xl text-purple-900 tracking-tight">SAT: Sistema de Alerta Temprana</span>
         </div>
         <Link href="/register" className="bg-[#883feb] hover:bg-purple-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition">Acceder</Link>
@@ -26,9 +26,6 @@ export default function LandingPage() {
             Optimiza tu tiempo en cada visita. Realizá tus informes desde el móvil, firmalos en el momento y accedé a todo tu historial, estés donde estés.
           </p>
           <Link href="/register" className="inline-block bg-[#883feb] hover:bg-purple-700 text-white font-semibold py-4 px-10 rounded-lg shadow-lg text-lg transition">Crear cuenta ahora</Link>
-        </div>
-        <div className="flex-1 flex justify-center">
-          <Image src="/placeholder-logo.png" alt="App Demo" width={400} height={320} className="rounded-xl shadow-xl border border-purple-100 bg-white object-contain" unoptimized />
         </div>
       </section>
 
@@ -92,16 +89,14 @@ export default function LandingPage() {
           <h2 className="text-3xl font-bold text-purple-900 mb-10 text-center">Testimonios</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow p-6 flex flex-col">
-              <p className="text-gray-700 italic mb-4">“SAT me permite hacer recorridas mucho más rápido y entregar informes firmados en el momento. ¡Un antes y un después para mi trabajo!”</p>
+              <p className="text-gray-700 italic mb-4">“SAT me permite hacer recorridas mucho más rápido SIN CONEXION A INTERNET y entregar informes firmados en el momento. ¡Un antes y un después para mi trabajo!”</p>
               <div className="flex items-center gap-3 mt-auto">
-                <Image src="/placeholder-user.jpg" alt="Testimonio 1" width={40} height={40} className="rounded-full" unoptimized />
                 <span className="font-semibold text-purple-800">María G., Técnica S&H</span>
               </div>
             </div>
             <div className="bg-white rounded-lg shadow p-6 flex flex-col">
               <p className="text-gray-700 italic mb-4">“Con SAT tengo todo el historial de visitas y controles en un solo lugar. Es muy fácil de usar y me da tranquilidad.”</p>
               <div className="flex items-center gap-3 mt-auto">
-                <Image src="/placeholder-user.jpg" alt="Testimonio 2" width={40} height={40} className="rounded-full" unoptimized />
                 <span className="font-semibold text-purple-800">Lucas P., Técnico S&H</span>
               </div>
             </div>
@@ -114,16 +109,49 @@ export default function LandingPage() {
         <h2 className="text-3xl font-bold text-purple-900 mb-10 text-center">Preguntas frecuentes</h2>
         <div className="space-y-6">
           <details className="bg-white rounded-lg shadow p-4 group">
-            <summary className="font-semibold text-purple-800 cursor-pointer group-open:text-purple-900">¿Funciona sin conexión a internet?</summary>
-            <p className="text-gray-600 mt-2">Sí. Podés usar SAT sin estar conectado. Toda la información que cargues se sincroniza automáticamente cuando vuelvas a tener acceso a internet.</p>
+            <summary className="font-semibold text-purple-800 cursor-pointer group-open:text-purple-900 flex items-center justify-between gap-2 px-2 py-3 focus:outline-none min-h-[56px]">
+              ¿Funciona sin conexión a internet?
+              <span className="transition-transform duration-300 group-open:rotate-90">
+                <svg className="w-5 h-5 text-[#883feb]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="relative min-h-[100px]">
+              <div className="absolute left-0 right-0 top-0 group-open:opacity-100 opacity-0 transition-opacity duration-300 pointer-events-none">
+                <p className="text-gray-600 mt-2">Sí. Podés usar SAT sin estar conectado. Toda la información que cargues se sincroniza automáticamente cuando vuelvas a tener acceso a internet.</p>
+              </div>
+            </div>
           </details>
           <details className="bg-white rounded-lg shadow p-4 group">
-            <summary className="font-semibold text-purple-800 cursor-pointer group-open:text-purple-900">¿Puedo firmar informes desde el celular?</summary>
-            <p className="text-gray-600 mt-2">Sí, la app permite firmar informes digitalmente desde cualquier dispositivo móvil.</p>
+            <summary className="font-semibold text-purple-800 cursor-pointer group-open:text-purple-900 flex items-center justify-between gap-2 px-2 py-3 focus:outline-none min-h-[56px]">
+              ¿Puedo firmar informes desde el celular?
+              <span className="transition-transform duration-300 group-open:rotate-90">
+                <svg className="w-5 h-5 text-[#883feb]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="relative min-h-[56px]">
+              <div className="absolute left-0 right-0 top-0 group-open:opacity-100 opacity-0 transition-opacity duration-300 pointer-events-none">
+                <p className="text-gray-600 mt-2">Sí, la app permite firmar informes digitalmente desde cualquier dispositivo móvil.</p>
+              </div>
+            </div>
           </details>
           <details className="bg-white rounded-lg shadow p-4 group">
-            <summary className="font-semibold text-purple-800 cursor-pointer group-open:text-purple-900">¿Cómo accedo a mis reportes anteriores?</summary>
-            <p className="text-gray-600 mt-2">Todos los reportes y visitas quedan guardados y accesibles desde tu cuenta en SAT.</p>
+            <summary className="font-semibold text-purple-800 cursor-pointer group-open:text-purple-900 flex items-center justify-between gap-2 px-2 py-3 focus:outline-none min-h-[56px]">
+              ¿Cómo accedo a mis reportes anteriores?
+              <span className="transition-transform duration-300 group-open:rotate-90">
+                <svg className="w-5 h-5 text-[#883feb]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </summary>
+            <div className="relative min-h-[56px]">
+              <div className="absolute left-0 right-0 top-0 group-open:opacity-100 opacity-0 transition-opacity duration-300 pointer-events-none">
+                <p className="text-gray-600 mt-2">Todos los reportes y visitas quedan guardados y accesibles desde tu cuenta en SAT.</p>
+              </div>
+            </div>
           </details>
         </div>
       </section>
@@ -132,13 +160,11 @@ export default function LandingPage() {
       <footer className="w-full bg-[#883feb] text-white py-8 mt-8">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2 mb-4 md:mb-0">
-            <Image src="/icon.png" alt="Logo SAT" width={36} height={36} className="rounded-full" unoptimized />
-            <span className="font-bold text-lg tracking-tight">SAT</span>
+            <span className="font-bold text-lg tracking-tight"></span>
           </div>
           <nav className="flex gap-6 text-sm">
-            <Link href="/register" className="hover:underline">Registrarse</Link>
-            <Link href="/login" className="hover:underline">Login</Link>
-            <a href="#" className="hover:underline">Contacto</a>
+            <Link href="/register" className="px-4 py-2 rounded-lg bg-white/90 text-[#883feb] font-semibold shadow hover:bg-white hover:text-[#b47cff] transition border border-[#883feb]">Registrarse</Link>
+            <Link href="/login" className="px-4 py-2 rounded-lg bg-[#883feb] text-white font-semibold shadow hover:bg-[#b47cff] transition border border-white">Login</Link>
           </nav>
           <div className="flex gap-4">
             <a href="#" aria-label="LinkedIn" className="hover:text-purple-300">
