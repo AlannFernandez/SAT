@@ -1,15 +1,31 @@
 "use client"
 
-import { Bell, User, Wifi, WifiOff, Download, Menu } from "lucide-react"
+import { Bell, User, Wifi, WifiOff, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { usePWA } from "@/components/providers/pwa-provider"
 import { useMobileSidebar } from "@/components/layout/main-layout"
+import { useState, useEffect } from "react"
 
 export function TopBar() {
-  const { isOnline, isInstallable, installApp, isSyncing } = usePWA()
   const { toggleSidebar } = useMobileSidebar()
+  const [isOnline, setIsOnline] = useState(true)
+
+  // Detectar estado de conexión
+  useEffect(() => {
+    const updateOnlineStatus = () => {
+      setIsOnline(navigator.onLine)
+    }
+
+    window.addEventListener("online", updateOnlineStatus)
+    window.addEventListener("offline", updateOnlineStatus)
+    setIsOnline(navigator.onLine)
+
+    return () => {
+      window.removeEventListener("online", updateOnlineStatus)
+      window.removeEventListener("offline", updateOnlineStatus)
+    }
+  }, [])
 
   const handleLogout = () => {
     document.cookie = "sat_session=; path=/; max-age=0";
@@ -54,20 +70,7 @@ export function TopBar() {
                 <span className="text-sm hidden sm:inline">Sin conexión</span>
               </div>
             )}
-            {isSyncing && (
-              <Badge variant="secondary" className="animate-pulse ml-2">
-                <span className="hidden sm:inline">Sincronizando...</span>
-                <span className="sm:hidden">Sync</span>
-              </Badge>
-            )}
           </div>
-          {/* Install App */}
-          {isInstallable && (
-            <Button variant="outline" size="sm" onClick={installApp}>
-              <Download className="w-4 h-4 sm:mr-2" />
-              <span className="hidden sm:inline">Instalar</span>
-            </Button>
-          )}
           {/* Notifications */}
           <Button variant="ghost" size="sm" className="relative">
             <Bell className="w-4 h-4" />

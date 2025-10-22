@@ -2,15 +2,30 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { dataService, type Product } from "@/lib/services/data-service"
-import { usePWA } from "@/components/providers/pwa-provider"
 import { useToast } from "@/hooks/use-toast"
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const { isOnline } = usePWA()
+  const [isOnline, setIsOnline] = useState(true)
   const { toast } = useToast()
+
+  // Detectar estado de conexión
+  useEffect(() => {
+    const updateOnlineStatus = () => {
+      setIsOnline(navigator.onLine)
+    }
+
+    window.addEventListener("online", updateOnlineStatus)
+    window.addEventListener("offline", updateOnlineStatus)
+    setIsOnline(navigator.onLine)
+
+    return () => {
+      window.removeEventListener("online", updateOnlineStatus)
+      window.removeEventListener("offline", updateOnlineStatus)
+    }
+  }, [])
 
   // Cargar productos iniciales
   const loadProducts = useCallback(async () => {

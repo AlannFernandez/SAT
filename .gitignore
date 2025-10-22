@@ -48,10 +48,5 @@ npm-debug.log*
 # OS
 Thumbs.db
 
-# PWA
-/public/sw.js.map
-/public/workbox-*.js
-/public/workbox-*.js.map
-
 # Bundle analyzer
 .next/analyze/

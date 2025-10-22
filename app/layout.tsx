@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import "@/styles/globals.css";
-import { PWAProvider } from "@/components/providers/pwa-provider"
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
@@ -50,10 +49,8 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="font-sans antialiased">
-        <PWAProvider>
-          {children}
-          <Toaster />
-        </PWAProvider>
+        {children}
+        <Toaster />
       </body>
     </html>
   )
