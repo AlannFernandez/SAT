@@ -47,7 +47,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-[#73BD4D] via-[#8BC962] to-[#fff] px-4 overflow-hidden">
-      {/* Fondo decorativo SVG */}
+      {/* Fondo decorativo */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <svg width="100%" height="100%" viewBox="0 0 600 600" className="absolute top-0 left-0 opacity-20">
           <circle cx="500" cy="100" r="80" fill="#73BD4D" />
